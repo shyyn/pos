@@ -9,7 +9,7 @@ const commands = [
           {
             name: 'expression',
             description: 'The mathematical expression to calculate',
-            type: 3, // STRING type
+            type: 3,
             required: true,
           },
         ],
