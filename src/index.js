@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, IntentsBitField } = require('discord.js');
+const { Client, IntentsBitField, ActivityType } = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -12,6 +12,9 @@ const client = new Client({
 
 client.on('ready', (c) => {
     console.log(`❤ ${c.user.id} is online.`);
+    client.user.setActivity("I like otters! :3", {
+        type: ActivityType.Streaming
+    });
 })
 
 client.on('messageCreate', (message) => {
@@ -40,7 +43,7 @@ client.on('interactionCreate', async (interaction) => {
 
         try {
             const result = eval(expression);
-            await interaction.reply(`Result: <@${interaction.user.id}> ${result}`);
+            await interaction.reply(`Result, <@${interaction.user.id}>: ${result}`);
         } catch (error) {
             console.error(error);
             await interaction.reply('An error has occured while calculating. ');
