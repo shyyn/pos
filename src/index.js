@@ -1,5 +1,5 @@
 require('dotenv').config();
-const { Client, IntentsBitField, ActivityType } = require('discord.js');
+const { Client, IntentsBitField, ActivityType, EmbedBuilder } = require('discord.js');
 
 const client = new Client({
     intents: [
@@ -19,12 +19,17 @@ client.on('ready', (c) => {
 
 client.on('messageCreate', (message) => {
   
-    if (message.author.bot) {
+   if (message.author.bot) {
         return;
     }
 
+
     if (message.content === 'hello') {
         message.reply('hi');
+    }
+
+    if (message.content === '@everyone') {
+        message.reply('@everyone');
     }
 });
 
@@ -50,4 +55,5 @@ client.on('interactionCreate', async (interaction) => {
         }
     }
 });
+
 client.login(process.env.TOKEN);
